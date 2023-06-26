@@ -102,3 +102,5 @@ F:\2023\Convey\GitMyConvey\PracticeConvey\FirstApp\obj\Debug\net6.0\refint\First
 F:\2023\Convey\GitMyConvey\PracticeConvey\FirstApp\obj\Debug\net6.0\FirstApp.pdb
 F:\2023\Convey\GitMyConvey\PracticeConvey\FirstApp\obj\Debug\net6.0\FirstApp.genruntimeconfig.cache
 F:\2023\Convey\GitMyConvey\PracticeConvey\FirstApp\obj\Debug\net6.0\ref\FirstApp.dll
+F:\2023\Convey\GitMyConvey\PracticeConvey\FirstApp\bin\Debug\net6.0\Convey.HTTP.dll
+F:\2023\Convey\GitMyConvey\PracticeConvey\FirstApp\bin\Debug\net6.0\Polly.dll

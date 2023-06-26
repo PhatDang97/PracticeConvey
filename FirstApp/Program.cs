@@ -12,7 +12,9 @@ using Convey.CQRS.Events;
 using Convey.CQRS.Queries;
 using Convey.Docs.Swagger;
 using Convey.WebApi;
+using Convey.WebApi.Exceptions;
 using Convey.WebApi.Swagger;
+using FirstApp;
 using FirstApp.Application.DTO;
 using FirstApp.Application.Events;
 using FirstApp.Application.Queries;
@@ -20,15 +22,15 @@ using FirstApp.Application.Reqest;
 
 public class Program
 {
-//    public static async Task Main(string[] args)
-//        => await WebHost.CreateDefaultBuilder(args)
-//            .ConfigureServices(services => services.AddConvey().Build())
-//            .Configure(app =>
-//            {
-//                //Configure the middleware
-//            })
-//            .Build()
-//            .RunAsync();
+    //    public static async Task Main(string[] args)
+    //        => await WebHost.CreateDefaultBuilder(args)
+    //            .ConfigureServices(services => services.AddConvey().Build())
+    //            .Configure(app =>
+    //            {
+    //                //Configure the middleware
+    //            })
+    //            .Build()
+    //            .RunAsync();
 
     public static async Task Main(string[] args)
         => await CreateHostBuilder(args)
@@ -36,11 +38,13 @@ public class Program
         {
             services.AddConvey();
         }).Build().RunAsync();
+    
     public static IHostBuilder CreateHostBuilder(string[] args)
         => Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
         {
             webBuilder.ConfigureServices(services => services
             .AddConvey()
+            .AddServices()
             .AddCommandHandlers()
             .AddInMemoryCommandDispatcher()
             .AddQueryHandlers()
@@ -53,7 +57,7 @@ public class Program
             .Build())
             .Configure(app => app
             .UseConvey()
-            .UseErrorHandler()
+            .UseRouting()
             .UseEndpoints(enpoints => enpoints
             .Get("", ctx => ctx.Response.WriteAsync("Hello"))
             .Get<GetAccount, AccountDto>("accounts/{accountId}")
